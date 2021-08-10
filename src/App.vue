@@ -54,7 +54,7 @@
 
   <h3>Interactive link</h3>
   <a v-bind:[attributeName]="'https://' + url" target="_blank">{{url}} </a> <br>
-  <input type="text" v-model="url">
+  <input type="text" v-model.lazy="url">
   <hr>
 
   <h3>Dynamic Event</h3>
@@ -162,8 +162,22 @@
     </select>
     <span>Selected: {{ selected }}</span>
 </div>
+<hr>
+<h3>Test Component</h3>
+<div :style="{fontSize: postFontSize + 'em'}">
+  <blog-post
+    v-for="post in posts"
+    :key="post.id"
+    :id="post.id"
+    :title="post.title"
+    :day="post.day"
+    @enlargeText="postFontSize += 0.1"
+    @shrinkText="postFontSize -= 0.1"
+  >
+  {{post.text}}
+  </blog-post>
+</div>
 
-   <hr>
 </template>
 
 <script>
@@ -171,6 +185,7 @@
   import AppValidatedInput from './components/ValidatedInput.vue';
   import AppProgressbar from './components/Progressbar.vue';
   import AppTodoItem from './components/AppTodoItem.vue';
+  import BlogPost from './components/BlogPost.vue';
   import axios from 'axios';
 
   export default {
@@ -178,10 +193,17 @@
       AppAction,
       AppValidatedInput,
       AppProgressbar,
-      AppTodoItem
+      AppTodoItem,
+      BlogPost
     },
     data() {
       return {
+        postFontSize: 1,
+        posts: [
+          {id: 1, title: 'My first Post', day: 'Mon', text: "aaa Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, corrupti?"},
+          {id: 2, title: 'My sec Post', day: 'Tue', text: "bbb Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, corrupti?"},
+          {id: 3, title: 'My third Post', day: 'Wed', text: "ccc Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, corrupti?"},
+        ],
         selected: [],
         forCheckboxes: [],
         numbers: 
