@@ -1,0 +1,43 @@
+{
+  "patients": [{
+      "id": 1,
+      "name": "John",
+      "surname": "Doe",
+      "visits": [{
+          "date": "10.10.2010",
+          "complaints": "",
+          "objective": "",
+          "local": "",
+          "recomendations": ""
+        },
+        {
+          "date": "12.12.2012",
+          "complaints": "",
+          "objective": "",
+          "local": "",
+          "recomendations": ""
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Jay",
+      "surname": "Doy",
+      "visits": [{
+          "date": "13.13.2013",
+          "complaints": "",
+          "objective": "",
+          "local": "",
+          "recomendations": ""
+        },
+        {
+          "date": "14.14.2014",
+          "complaints": "",
+          "objective": "",
+          "local": "",
+          "recomendations": ""
+        }
+      ]
+    }
+  ]
+}
