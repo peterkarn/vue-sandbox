@@ -13,6 +13,12 @@
     <button @click="$emit('shrinkText')">
       Shrink text
     </button>
+    <p>Post by {{author.name}}, {{author.age}} years</p>
+    <p>newAuthor is <b style="color:red">{{newAuthor}}</b> - <i>is modified in computed field of component</i></p>
+    <br>
+    Comment
+    <br>
+    <input type="text" v-bind="$attrs" />
   </div>
 
 </template>
@@ -23,13 +29,19 @@ export default {
     id: Number, 
     title: String,
     day: String,
+    author: Object,
   },
+  inheritAttrs: false,
   emits: ['enlargeText', 'shrinkText'],
-  methods: {
 
+  methods: {
+    
   },
   computed: {
-    
+    newAuthor() {
+      //используем внутри компонента
+      return this.author.name.split('').reverse().join('');
+    }
   }
 }
 </script>

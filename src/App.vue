@@ -166,18 +166,20 @@
 <h3>Test Component</h3>
 <div :style="{fontSize: postFontSize + 'em'}">
   <blog-post
+    placeholder="Non prop value passed here with :$attrs"
+    style="width: 100%; max-width: 500px"
     v-for="post in posts"
     :key="post.id"
     :id="post.id"
     :title="post.title"
     :day="post.day"
+    :author="post.author"
     @enlargeText="postFontSize += 0.1"
     @shrinkText="postFontSize -= 0.1"
   >
   {{post.text}}
   </blog-post>
 </div>
-
 </template>
 
 <script>
@@ -200,9 +202,36 @@
       return {
         postFontSize: 1,
         posts: [
-          {id: 1, title: 'My first Post', day: 'Mon', text: "aaa Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, corrupti?"},
-          {id: 2, title: 'My sec Post', day: 'Tue', text: "bbb Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, corrupti?"},
-          {id: 3, title: 'My third Post', day: 'Wed', text: "ccc Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, corrupti?"},
+          {
+          id: 1,
+          title: 'My first Post', 
+          day: 'Mon', 
+          text: "aaa Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, corrupti?", 
+          author: {
+            name: 'Veronica',
+            age: 22
+          }
+        },
+          {
+          id: 2,
+          title: 'My sec Post', 
+          day: 'Tue', 
+          text: "bbb Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, corrupti?", 
+          author: {
+            name: 'Mike',
+            age: 40
+          }
+        },
+          {
+          id: 3,
+          title: 'My third Post', 
+          day: 'Wed', 
+          text: "ccc Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, corrupti?", 
+          author: {
+            name: 'Joe',
+            age: 30
+          }
+        },
         ],
         selected: [],
         forCheckboxes: [],
